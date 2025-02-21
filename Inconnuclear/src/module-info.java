@@ -1,3 +1,29 @@
 module org.retropipes.inconnuclear {
     requires java.desktop;
+    requires org.retropipes.diane.ack;
+    requires org.retropipes.diane.asset;
+    requires org.retropipes.diane.asset.image;
+    requires org.retropipes.diane.asset.music;
+    requires org.retropipes.diane.asset.sound;
+    requires org.retropipes.diane.direction;
+    requires org.retropipes.diane.drawgrid;
+    requires org.retropipes.diane.edge;
+    requires org.retropipes.diane.fileio;
+    requires org.retropipes.diane.fileio.utility;
+    requires org.retropipes.diane.gameshell;
+    requires org.retropipes.diane.gui;
+    requires org.retropipes.diane.gui.picker;
+    requires org.retropipes.diane.gui.polytable;
+    requires org.retropipes.diane.help;
+    requires org.retropipes.diane.integration;
+    requires org.retropipes.diane.internal;
+    requires org.retropipes.diane.objectmodel;
+    requires org.retropipes.diane.point;
+    requires org.retropipes.diane.polytable;
+    requires org.retropipes.diane.random;
+    requires org.retropipes.diane.sandbox;
+    requires org.retropipes.diane.scoring;
+    requires org.retropipes.diane.storage;
+    requires org.retropipes.diane.update;
+    requires org.retropipes.diane.utility;
 }
