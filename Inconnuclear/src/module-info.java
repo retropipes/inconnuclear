@@ -1,9 +1,11 @@
 module org.retropipes.inconnuclear {
     requires java.desktop;
+    requires java.logging;
     requires org.retropipes.diane.ack;
     requires org.retropipes.diane.asset;
     requires org.retropipes.diane.asset.image;
     requires org.retropipes.diane.asset.music;
+    requires org.retropipes.diane.asset.ogg;
     requires org.retropipes.diane.asset.sound;
     requires org.retropipes.diane.direction;
     requires org.retropipes.diane.drawgrid;
@@ -26,4 +28,5 @@ module org.retropipes.inconnuclear {
     requires org.retropipes.diane.storage;
     requires org.retropipes.diane.update;
     requires org.retropipes.diane.utility;
+    requires org.retropipes.diane.vorbis;
 }
