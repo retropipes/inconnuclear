@@ -1,0 +1,3 @@
+[submodule "diane-game-engine-module"]
+	path = diane-game-engine-module
+	url = https://github.com/retropipes/diane-game-engine-module.git
