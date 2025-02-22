@@ -285,7 +285,7 @@ public class WindowTimeBattleLogic extends Battle {
 		    SoundLoader.playSound(Sounds.PARTY_COUNTER);
 		} else {
 		    displayEnemyDamageString = "The " + enemyName + " hits you for " + enemyDamageString + " damage!";
-		    SoundLoader.playSound(Sounds.ENEMY_HIT);
+		    SoundLoader.playSound(Sounds.MONSTER_HIT);
 		}
 		if (this.ede.weaponCrit()) {
 		    enemyWhackString += "CRITICAL HIT!\n";
@@ -319,10 +319,10 @@ public class WindowTimeBattleLogic extends Battle {
 		} else if (this.damage < 0) {
 		    displayPlayerDamageString = "You try to hit the " + enemyName + ", but are RIPOSTED for "
 			    + -this.damage + " damage!";
-		    SoundLoader.playSound(Sounds.ENEMY_COUNTER);
+		    SoundLoader.playSound(Sounds.MONSTER_COUNTER);
 		} else {
 		    displayPlayerDamageString = "You hit the " + enemyName + " for " + playerDamageString + " damage!";
-		    SoundLoader.playSound(Sounds.ATTACK_PUNCH);
+		    SoundLoader.playSound(Sounds.PUNCH);
 		}
 		if (this.pde.weaponCrit()) {
 		    playerWhackString.append("CRITICAL HIT!\n");
@@ -438,7 +438,7 @@ public class WindowTimeBattleLogic extends Battle {
 	case BattleAction.STEAL:
 	    success = this.steal();
 	    if (success) {
-		SoundLoader.playSound(Sounds.EFFECT_DRAIN);
+		SoundLoader.playSound(Sounds.DRAIN);
 		this.updateMessageAreaPostSteal();
 	    } else {
 		SoundLoader.playSound(Sounds.ACTION_FAILED);
@@ -448,7 +448,7 @@ public class WindowTimeBattleLogic extends Battle {
 	case BattleAction.DRAIN:
 	    success = this.drain();
 	    if (success) {
-		SoundLoader.playSound(Sounds.EFFECT_DRAIN);
+		SoundLoader.playSound(Sounds.DRAIN);
 		this.updateMessageAreaPostDrain();
 	    } else {
 		SoundLoader.playSound(Sounds.ACTION_FAILED);
@@ -547,7 +547,7 @@ public class WindowTimeBattleLogic extends Battle {
 	// Level Up Check
 	if (playerCharacter.checkLevelUp()) {
 	    playerCharacter.levelUp();
-	    SoundLoader.playSound(Sounds.GAIN_LEVEL);
+	    SoundLoader.playSound(Sounds.LEVEL_UP);
 	    this.setStatusMessage("You reached level " + playerCharacter.getLevel() + ".");
 	}
 	// Final Cleanup

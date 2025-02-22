@@ -360,7 +360,7 @@ public class GUIManager implements MenuSection, QuitHandler {
 	final var app = Inconnuclear.getStuffBag();
 	app.setInGUI();
 	this.attachMenus();
-	MusicLoader.playMusic(Music.TITLE);
+	MusicLoader.playMusic(Music.EXUDING_TITLENESS);
 	this.mainWindow.setAndSave(this.guiPane, Strings.untranslated(Untranslated.PROGRAM_NAME));
 	this.mainWindow.addWindowListener(this.cHandler);
 	app.getMenus().checkFlags();

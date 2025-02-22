@@ -197,8 +197,8 @@ public class MapTimeBattleLogic extends Battle {
 	final var activeName = active.getName();
 	final var enemyName = theEnemy.getName();
 	final var isPlayer = active.getTeamID() == Creature.TEAM_PARTY;
-	final var counterSound = isPlayer ? Sounds.PARTY_COUNTER : Sounds.ENEMY_COUNTER;
-	final var hitSound = isPlayer ? Sounds.ATTACK_PUNCH : Sounds.ENEMY_HIT;
+	final var counterSound = isPlayer ? Sounds.PARTY_COUNTER : Sounds.MONSTER_COUNTER;
+	final var hitSound = isPlayer ? Sounds.PUNCH : Sounds.MONSTER_HIT;
 	var damageString = Integer.toString(this.damage);
 	var displayDamageString = " ";
 	if (this.damage == 0) {
@@ -337,7 +337,7 @@ public class MapTimeBattleLogic extends Battle {
 	if (MusicLoader.isMusicPlaying()) {
 	    MusicLoader.stopMusic();
 	}
-	MusicLoader.playMusic(Music.BOSS);
+	MusicLoader.playMusic(Music.APOPLEXY);
 	this.doBattleInternal(bMap);
     }
 
@@ -958,7 +958,7 @@ public class MapTimeBattleLogic extends Battle {
 	    final BattleCharacter theEnemy, final DamageEngine activeDE, final AIContext activeContext,
 	    final boolean updateView) {
 	final var isPlayer = active.getTeamID() == Creature.TEAM_PARTY;
-	final var stepSound = isPlayer ? Sounds.STEP_PARTY : Sounds.STEP_ENEMY;
+	final var stepSound = isPlayer ? Sounds.WALK_5 : Sounds.WALK_6;
 	this.updateAllAIContexts();
 	var px = active.getX();
 	var py = active.getY();
@@ -1159,7 +1159,7 @@ public class MapTimeBattleLogic extends Battle {
 	} else {
 	    // Confirm Flee
 	    if (!active.hasAI()) {
-		SoundLoader.playSound(Sounds.RUN);
+		SoundLoader.playSound(Sounds.RUN_AWAY);
 		final var confirm = CommonDialogs.showConfirmDialog("Embrace Cowardice?", "Battle");
 		if (confirm != JOptionPane.YES_OPTION) {
 		    if (updateView) {

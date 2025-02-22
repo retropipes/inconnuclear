@@ -548,7 +548,7 @@ public final class DungeonData extends DungeonDataBase {
 	    if (!this.getCell(dungeonBase, dx, dy, zFix, source.getLayer()).getClass()
 		    .equals(source.getBoundObject().getClass())) {
 		this.setCell(dungeonBase, source.getBoundObject(), dx, dy, zFix, source.getLayer());
-		SoundLoader.playSound(Sounds.DOOR_CLOSES);
+		SoundLoader.playSound(Sounds.DOOR_CLOSE);
 	    }
 	}
     }
@@ -581,7 +581,7 @@ public final class DungeonData extends DungeonDataBase {
 	    final var dy = source.getBoundObjectY();
 	    if (!(this.getCell(dungeonBase, dx, dy, zFix, source.getLayer()).getId() != ObjectImageId.GRASS)) {
 		this.setCell(dungeonBase, new GameObject(ObjectImageId.GRASS), dx, dy, zFix, source.getLayer());
-		SoundLoader.playSound(Sounds.DOOR_OPENS);
+		SoundLoader.playSound(Sounds.DOOR_OPEN);
 	    }
 	}
     }

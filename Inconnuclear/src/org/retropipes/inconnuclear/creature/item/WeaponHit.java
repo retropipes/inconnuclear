@@ -9,8 +9,8 @@ package org.retropipes.inconnuclear.creature.item;
 import org.retropipes.inconnuclear.loader.sound.Sounds;
 
 public class WeaponHit {
-    private static final Sounds[] HIT_SOUND_LOOKUP = { Sounds.ATTACK_AXE, Sounds.ATTACK_KNIFE, Sounds.ATTACK_HAMMER,
-	    Sounds.ATTACK_CLUB, Sounds.ATTACK_SWORD, Sounds.ATTACK_MACE };
+    private static final Sounds[] HIT_SOUND_LOOKUP = { Sounds.AXE_HIT, Sounds.SPEAR_HIT, Sounds.HAMMER_HIT,
+	    Sounds.CLUB_HIT, Sounds.SWORD_HIT, Sounds.MACE_HIT };
 
     public static Sounds getWeaponTypeHitSound(final int index) {
 	return WeaponHit.HIT_SOUND_LOOKUP[index];

@@ -76,7 +76,7 @@ public class PartyManager {
 	if (MusicLoader.isMusicPlaying()) {
 	    MusicLoader.stopMusic();
 	}
-	MusicLoader.playMusic(Music.CREATE);
+	MusicLoader.playMusic(Music.CREATION_X);
 	PartyManager.party = new Party();
 	var mem = 0;
 	final var pickMembers = CharacterLoader.loadAllRegisteredCharacters(diff);

@@ -140,14 +140,14 @@ final class MLOTask extends Thread {
 	    this.magnet = true;
 	    if (this.sx == 0 && this.sy == 0) {
 		// Failure
-		SoundLoader.playSound(Sounds.STEP_FAIL);
+		SoundLoader.playSound(Sounds.OOF);
 	    } else {
 		// Success
 	    }
 	    Game.updateUndo(false, false, false, false, true, false, false, false, false, false);
 	} else {
 	    // Moving normally
-	    SoundLoader.playSound(Sounds.STEP_PARTY);
+	    SoundLoader.playSound(Sounds.WALK_5);
 	    gm.updateScore(1, 0, 0);
 	    this.sx = zx;
 	    this.sy = zy;

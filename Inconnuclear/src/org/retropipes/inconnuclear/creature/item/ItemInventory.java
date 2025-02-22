@@ -60,7 +60,7 @@ public class ItemInventory {
 	// Equip it
 	this.equipment[ei.getSlotUsed().ordinal()] = ei;
 	if (playSound) {
-	    SoundLoader.playSound(Sounds.EQUIP);
+	    SoundLoader.playSound(Sounds.EQUIP_OTHER);
 	}
     }
 
@@ -131,9 +131,9 @@ public class ItemInventory {
 	    return weapon.getHitSound();
 	}
 	if (pc.getTeamID() == Creature.TEAM_PARTY) {
-	    return Sounds.ATTACK_PUNCH;
+	    return Sounds.PUNCH;
 	}
-	return Sounds.ENEMY_HIT;
+	return Sounds.MONSTER_HIT;
     }
 
     @Override

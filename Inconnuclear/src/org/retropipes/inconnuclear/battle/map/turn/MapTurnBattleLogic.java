@@ -154,7 +154,7 @@ public class MapTurnBattleLogic extends Battle {
 	final var success = SpellCaster.castSpell(sp, this.bd.getActiveCharacter().getCreature(),
 		this.enemy.getCreature());
 	if (success) {
-	    SoundLoader.playSound(Sounds.ENEMY_SPELL);
+	    SoundLoader.playSound(Sounds.MONSTER_SPELL);
 	    this.decrementActiveSpellCounter();
 	}
 	final var currResult = this.getResult();
@@ -294,18 +294,18 @@ public class MapTurnBattleLogic extends Battle {
 	    var displayDamagePrefix = "";
 	    if (activeDE.weaponCrit() && activeDE.weaponPierce()) {
 		displayDamagePrefix = "PIERCING CRITICAL HIT! ";
-		SoundLoader.playSound(Sounds.ENEMY_COUNTER);
+		SoundLoader.playSound(Sounds.MONSTER_COUNTER);
 		SoundLoader.playSound(Sounds.CRITICAL);
 	    } else if (activeDE.weaponCrit()) {
 		displayDamagePrefix = "CRITICAL HIT! ";
 		SoundLoader.playSound(Sounds.CRITICAL);
 	    } else if (activeDE.weaponPierce()) {
 		displayDamagePrefix = "PIERCING HIT! ";
-		SoundLoader.playSound(Sounds.ENEMY_COUNTER);
+		SoundLoader.playSound(Sounds.MONSTER_COUNTER);
 	    }
 	    displayDamageString = displayDamagePrefix + activeName + " tries to hit " + enemyName + ", but " + enemyName
 		    + " RIPOSTES for " + damageString + " damage!";
-	    SoundLoader.playSound(Sounds.ENEMY_COUNTER);
+	    SoundLoader.playSound(Sounds.MONSTER_COUNTER);
 	} else {
 	    var displayDamagePrefix = "";
 	    if (activeDE.weaponFumble()) {
@@ -315,14 +315,14 @@ public class MapTurnBattleLogic extends Battle {
 	    } else {
 		if (activeDE.weaponCrit() && activeDE.weaponPierce()) {
 		    displayDamagePrefix = "PIERCING CRITICAL HIT! ";
-		    SoundLoader.playSound(Sounds.ENEMY_COUNTER);
+		    SoundLoader.playSound(Sounds.MONSTER_COUNTER);
 		    SoundLoader.playSound(Sounds.CRITICAL);
 		} else if (activeDE.weaponCrit()) {
 		    displayDamagePrefix = "CRITICAL HIT! ";
 		    SoundLoader.playSound(Sounds.CRITICAL);
 		} else if (activeDE.weaponPierce()) {
 		    displayDamagePrefix = "PIERCING HIT! ";
-		    SoundLoader.playSound(Sounds.ENEMY_COUNTER);
+		    SoundLoader.playSound(Sounds.MONSTER_COUNTER);
 		}
 		displayDamageString = displayDamagePrefix + activeName + " hits " + enemyName + " for " + damageString
 			+ " damage!";
@@ -419,7 +419,7 @@ public class MapTurnBattleLogic extends Battle {
 	if (MusicLoader.isMusicPlaying()) {
 	    MusicLoader.stopMusic();
 	}
-	MusicLoader.playMusic(Music.BOSS);
+	MusicLoader.playMusic(Music.APOPLEXY);
 	this.doBattleInternal(bMap);
     }
 
@@ -1023,7 +1023,7 @@ public class MapTurnBattleLogic extends Battle {
 	if (next == null || nextGround == null || currGround == null) {
 	    // Confirm Flee
 	    if (!activeBC.hasAI()) {
-		SoundLoader.playSound(Sounds.QUESTION);
+		SoundLoader.playSound(Sounds.SLIME);
 		final var confirm = CommonDialogs.showConfirmDialog("Embrace Cowardice?", "Battle");
 		if (confirm != CommonDialogs.YES_OPTION) {
 		    this.battleGUI.getViewManager().restoreViewingWindow();
@@ -1032,7 +1032,7 @@ public class MapTurnBattleLogic extends Battle {
 		}
 	    }
 	    // Flee
-	    SoundLoader.playSound(Sounds.RUN);
+	    SoundLoader.playSound(Sounds.RUN_AWAY);
 	    this.battleGUI.getViewManager().restoreViewingWindow();
 	    activeBC.restoreLocation();
 	    // Set fled character to inactive
@@ -1186,9 +1186,9 @@ public class MapTurnBattleLogic extends Battle {
 	    m.setCell(activeBC.getTile(), px, py, 0, Layer.STATUS.ordinal());
 	    this.decrementActiveActionCounterBy(AIContext.getAPCost());
 	    if (activeBC.getTeamID() == Creature.TEAM_PARTY) {
-		SoundLoader.playSound(Sounds.STEP_PARTY);
+		SoundLoader.playSound(Sounds.WALK_5);
 	    } else {
-		SoundLoader.playSound(Sounds.STEP_ENEMY);
+		SoundLoader.playSound(Sounds.WALK_6);
 	    }
 	} else if (next.getIdValue() == ObjectImageId._CREATURE.ordinal()) {
 	    if ((!useAP || this.getActiveAttackCounter() <= 0) && useAP) {

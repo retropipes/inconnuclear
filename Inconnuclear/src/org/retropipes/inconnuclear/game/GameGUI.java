@@ -393,9 +393,9 @@ class GameGUI {
 	}
 	final var zoneID = PartyManager.getParty().getZone();
 	if (zoneID == DungeonBase.getMaxLevels() - 1) {
-	    MusicLoader.playMusic(Music.LAIR);
+	    MusicLoader.playMusic(Music.DEVILS_DANCE_1);
 	} else {
-	    MusicLoader.playMusic(Music.DUNGEON);
+	    MusicLoader.playMusic(Music.DUNGEON_00);
 	}
 	this.showOutputCommon();
     }
