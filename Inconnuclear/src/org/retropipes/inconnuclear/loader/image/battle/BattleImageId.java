@@ -50,11 +50,17 @@ public enum BattleImageId implements DianeImageIndex {
 
     @Override
     public String getName() {
+	if (this == BattleImageId._NONE) {
+	    return null;
+	}
 	return BattleImageCatalogLoader.getFilename(this.ordinal());
     }
 
     @Override
     public URL getURL() {
+	if (this == BattleImageId._NONE) {
+	    return null;
+	}
 	return this.getClass().getResource(Strings.untranslated(Untranslated.BATTLE_IMAGE_LOAD_PATH) + this.getName()
 		+ Strings.fileExtension(FileExtension.IMAGE));
     }

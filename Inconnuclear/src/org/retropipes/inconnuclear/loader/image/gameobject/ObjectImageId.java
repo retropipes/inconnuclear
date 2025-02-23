@@ -15,6 +15,7 @@ import org.retropipes.inconnuclear.locale.Strings;
 import org.retropipes.inconnuclear.locale.Untranslated;
 
 public enum ObjectImageId implements DianeImageIndex, ObjectId {
+    _NONE,
     ALL_BUTTON,
     ALL_DOOR,
     ARMOR_SHOP,
@@ -269,8 +270,7 @@ public enum ObjectImageId implements DianeImageIndex, ObjectId {
     WEAKENED,
     WEAPON_SHOP,
     ZAP,
-    _CREATURE,
-    _NONE;
+    _CREATURE;
 
     @Override
     public String getName() {
