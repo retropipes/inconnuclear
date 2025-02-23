@@ -15,7 +15,7 @@ import org.retropipes.inconnuclear.locale.Strings;
 
 class EffectImageCatalogLoader {
     private static ArrayList<String> FILENAME_CACHE = null;
-    private static String CATALOG_PATH = "/asset/catalog/image/status.catalog"; //$NON-NLS-1$
+    private static String CATALOG_PATH = "/asset/catalog/image/effect.catalog"; //$NON-NLS-1$
 
     static String getFilename(final int index) {
 	if (FILENAME_CACHE == null) {

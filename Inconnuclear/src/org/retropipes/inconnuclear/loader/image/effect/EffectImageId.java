@@ -14,8 +14,30 @@ import org.retropipes.inconnuclear.locale.Strings;
 import org.retropipes.inconnuclear.locale.Untranslated;
 
 public enum EffectImageId implements DianeImageIndex {
-    BLIND, CLAIRVOYANT, FAST, FASTER, FASTEST, FORTIFIED, GATHERING, LEARNING, POISONED, POOR, REGENERATING, RESISTANT,
-    RICH, SLOW, SLOWER, SLOWEST, SPEED, STRONG, SUSCEPTIBLE, VULNERABLE, WEAK, WITHERING, YEARNING, _NONE;
+    BLIND,
+    CLAIRVOYANT,
+    FAST,
+    FASTER,
+    FASTEST,
+    FORTIFIED,
+    GATHERING,
+    LEARNING,
+    POISONED,
+    POOR,
+    REGENERATING,
+    RESISTANT,
+    RICH,
+    SLOW,
+    SLOWER,
+    SLOWEST,
+    SPEED,
+    STRONG,
+    SUSCEPTIBLE,
+    VULNERABLE,
+    WEAK,
+    WITHERING,
+    YEARNING,
+    _NONE;
 
     @Override
     public String getName() {
