@@ -6,49 +6,28 @@ All support is handled via the GitHub repository: https://github.com/retropipes/
  */
 package org.retropipes.inconnuclear.loader.music;
 
-import java.nio.BufferUnderflowException;
+import java.io.IOException;
 
-import org.retropipes.diane.asset.ogg.DianeOggPlayer;
-import org.retropipes.inconnuclear.locale.FileExtension;
+import org.retropipes.diane.asset.music.DianeMusicPlayer;
+import org.retropipes.inconnuclear.Inconnuclear;
 import org.retropipes.inconnuclear.locale.Music;
-import org.retropipes.inconnuclear.locale.Strings;
-import org.retropipes.inconnuclear.locale.Untranslated;
 
 public class MusicLoader {
-    // Fields
-    private static DianeOggPlayer CURRENT_MUSIC;
-    private static Class<?> LOAD_CLASS = MusicLoader.class;
-
-    private static DianeOggPlayer getMusic(final String filename) {
-	final var oggFile = MusicLoader.LOAD_CLASS.getResource(Strings.untranslated(Untranslated.MUSIC_LOAD_PATH)
-		+ filename + Strings.fileExtension(FileExtension.MUSIC));
-	return DianeOggPlayer.loadLoopedResource(oggFile);
-    }
-
     public static boolean isMusicPlaying() {
-	if (MusicLoader.CURRENT_MUSIC != null) {
-	    return MusicLoader.CURRENT_MUSIC.isAlive();
-	}
-	return false;
+	return DianeMusicPlayer.isPlaying();
     }
 
     public static void playMusic(final Music musicID) {
-	MusicLoader.CURRENT_MUSIC = MusicLoader.getMusic(MusicCatalogLoader.getMusicFilename(musicID));
-	if (MusicLoader.CURRENT_MUSIC != null) {
-	    // Play the music
-	    MusicLoader.CURRENT_MUSIC.play();
+	// Play the music
+	try {
+	    DianeMusicPlayer.play(musicID);
+	} catch (IOException e) {
+	    Inconnuclear.logError(e);
 	}
     }
 
     public static void stopMusic() {
-	if (MusicLoader.CURRENT_MUSIC != null) {
-	    // Stop the music
-	    try {
-		DianeOggPlayer.stopPlaying();
-	    } catch (final BufferUnderflowException bue) {
-		// Ignore
-	    }
-	}
+	DianeMusicPlayer.stopPlaying();
     }
 
     // Constructors
