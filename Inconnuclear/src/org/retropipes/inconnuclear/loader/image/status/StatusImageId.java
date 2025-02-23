@@ -14,19 +14,59 @@ import org.retropipes.inconnuclear.locale.Strings;
 import org.retropipes.inconnuclear.locale.Untranslated;
 
 public enum StatusImageId implements DianeImageIndex {
-    ACTIONS_00, ACTIONS_01, ACTIONS_02, ACTIONS_03, ACTIONS_04, ACTIONS_05, ACTIONS_06, ACTIONS_07, ACTIONS_08,
-    ACTIONS_09, ACTIONS_10, ACTIONS_11, ACTIONS_12, ACTIONS_13, ACTIONS_14, ACTIONS_15, ACTIONS_16, ACTIONS_17,
-    ACTIONS_18, ACTIONS_19, ATTACKS_LEFT, CASTS_LEFT, CREATURE_ID, CREATURE_LEVEL, CREATURE_TEAM, DEFENSE, DEPTH,
-    EXPERIENCE, HEALTH, ITEMS_LEFT, MAGIC, MAGIC_DEFENSE, MELEE_ATTACK, MONEY, MOVES_LEFT, RANGED_ATTACK, START,
-    THEFTS_LEFT, _NONE;
+    ACTIONS_00,
+    ACTIONS_01,
+    ACTIONS_02,
+    ACTIONS_03,
+    ACTIONS_04,
+    ACTIONS_05,
+    ACTIONS_06,
+    ACTIONS_07,
+    ACTIONS_08,
+    ACTIONS_09,
+    ACTIONS_10,
+    ACTIONS_11,
+    ACTIONS_12,
+    ACTIONS_13,
+    ACTIONS_14,
+    ACTIONS_15,
+    ACTIONS_16,
+    ACTIONS_17,
+    ACTIONS_18,
+    ACTIONS_19,
+    ATTACKS_LEFT,
+    CASTS_LEFT,
+    CREATURE_ID,
+    CREATURE_LEVEL,
+    CREATURE_TEAM,
+    DEFENSE,
+    DEPTH,
+    EXPERIENCE,
+    HEALTH,
+    ITEMS_LEFT,
+    MAGIC,
+    MAGIC_DEFENSE,
+    MELEE_ATTACK,
+    MONEY,
+    MOVES_LEFT,
+    RANGED_ATTACK,
+    START,
+    THEFTS_LEFT,
+    _NONE;
 
     @Override
     public String getName() {
-	return StatusImageCatalogLoader.getFilename(this.ordinal());
+	if (this == StatusImageId._NONE) {
+	    return null;
+	}
+	return Integer.toString(this.ordinal());
     }
 
     @Override
     public URL getURL() {
+	if (this == StatusImageId._NONE) {
+	    return null;
+	}
 	return this.getClass().getResource(Strings.untranslated(Untranslated.STATUS_IMAGE_LOAD_PATH) + this.getName()
 		+ Strings.fileExtension(FileExtension.IMAGE));
     }

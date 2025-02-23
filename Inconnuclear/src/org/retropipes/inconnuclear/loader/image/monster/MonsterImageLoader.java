@@ -14,12 +14,18 @@ import org.retropipes.inconnuclear.locale.Strings;
 public class MonsterImageLoader {
     public static BufferedImageIcon load(final int index) {
 	var filename = Integer.toString(index);
-	return DianeImageLoader.load("monster-" + filename, MonsterImageLoader.class //$NON-NLS-1$
+	return DianeImageLoader.load("monster-" + filename, MonsterImageLoader.class // $NON-NLS-1$
 		.getResource("/asset/image/monster/" + filename + Strings.fileExtension(FileExtension.IMAGE))); //$NON-NLS-1$
     }
 
+    public static BufferedImageIcon loadBoss(final int index) {
+	var filename = Integer.toString(index);
+	return DianeImageLoader.load("boss-" + filename, MonsterImageLoader.class // $NON-NLS-1$
+		.getResource("/asset/image/boss/" + filename + Strings.fileExtension(FileExtension.IMAGE))); //$NON-NLS-1$
+    }
+
     public static BufferedImageIcon loadFinalBoss() {
-	return DianeImageLoader.load("final-boss", MonsterImageLoader.class //$NON-NLS-1$
+	return DianeImageLoader.load("boss-final", MonsterImageLoader.class //$NON-NLS-1$
 		.getResource("/asset/image/boss/final" + Strings.fileExtension(FileExtension.IMAGE))); //$NON-NLS-1$
     }
 }
