@@ -21,4 +21,12 @@ public class ObjectImageLoader {
 	return DianeImageLoader.load(name, ObjectImageLoader.class
 		.getResource("/asset/image/object/" + filename + Strings.fileExtension(FileExtension.IMAGE))); //$NON-NLS-1$
     }
+
+    public static BufferedImageIcon loadEditorIndicator(final EditorIndicator baseId) {
+	return DianeImageLoader.load(baseId);
+    }
+
+    public static BufferedImageIcon loadGameIndicator(final GameIndicator baseId) {
+	return DianeImageLoader.load(baseId);
+    }
 }
