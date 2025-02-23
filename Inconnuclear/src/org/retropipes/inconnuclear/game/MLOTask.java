@@ -417,22 +417,22 @@ final class MLOTask extends Thread {
 			gm.doDelayedDecay();
 		    }
 		    if (lgo == null) {
-			lgo = new GameObject(ObjectImageId.GRASS);
+			lgo = new GameObject(ObjectImageId.GROUND);
 		    }
 		    lgo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			    plMgr.getPlayerLocationZ());
 		    if (ugo == null) {
-			ugo = new GameObject(ObjectImageId.GRASS);
+			ugo = new GameObject(ObjectImageId.GROUND);
 		    }
 		    ugo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			    plMgr.getPlayerLocationZ());
 		    if (loo == null) {
-			loo = new GameObject(ObjectImageId.GRASS);
+			loo = new GameObject(ObjectImageId.GROUND);
 		    }
 		    loo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			    plMgr.getPlayerLocationZ());
 		    if (uoo == null) {
-			uoo = new GameObject(ObjectImageId.GRASS);
+			uoo = new GameObject(ObjectImageId.GROUND);
 		    }
 		    uoo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			    plMgr.getPlayerLocationZ());
@@ -453,22 +453,22 @@ final class MLOTask extends Thread {
 			plMgr.getPlayerLocationZ(), pw);
 		// Move failed - attempted to go outside the dungeon
 		if (lgo == null) {
-		    lgo = new GameObject(ObjectImageId.GRASS);
+		    lgo = new GameObject(ObjectImageId.GROUND);
 		}
 		lgo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			plMgr.getPlayerLocationZ());
 		if (ugo == null) {
-		    ugo = new GameObject(ObjectImageId.GRASS);
+		    ugo = new GameObject(ObjectImageId.GROUND);
 		}
 		ugo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			plMgr.getPlayerLocationZ());
 		if (loo == null) {
-		    loo = new GameObject(ObjectImageId.GRASS);
+		    loo = new GameObject(ObjectImageId.GROUND);
 		}
 		loo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			plMgr.getPlayerLocationZ());
 		if (uoo == null) {
-		    uoo = new GameObject(ObjectImageId.GRASS);
+		    uoo = new GameObject(ObjectImageId.GROUND);
 		}
 		uoo.moveFailedAction(plMgr.getPlayerLocationX() + this.sx, plMgr.getPlayerLocationY() + this.sy,
 			plMgr.getPlayerLocationZ());

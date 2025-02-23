@@ -68,7 +68,7 @@ public class Settings {
     }
 
     public static GameObject getEditorDefaultFill() {
-	return new GameObject(ObjectImageId.GRASS);
+	return new GameObject(ObjectImageId.GROUND);
     }
 
     public static EditorLayout getEditorLayout() {

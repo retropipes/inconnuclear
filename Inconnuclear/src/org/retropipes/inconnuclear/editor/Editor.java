@@ -85,7 +85,7 @@ public class Editor implements MenuSection {
 	    editorGlobalMoveShoot;
 
     public Editor() {
-	this.savedGameObject = new GameObject(ObjectImageId.GRASS);
+	this.savedGameObject = new GameObject(ObjectImageId.GROUND);
 	this.lPrefs = new EditorLevelSettings();
 	this.mhandler = new EditorEventHandler(this);
 	this.shandler = new EditorStartEventHandler(this);
@@ -1038,7 +1038,7 @@ public class Editor implements MenuSection {
 		if (levelSizeZ > maxF) {
 		    throw new NumberFormatException(Strings.editor(EditorString.FLOORS_TOO_HIGH));
 		}
-		app.getDungeonManager().getDungeonBase().resize(levelSizeZ, new GameObject(ObjectImageId.GRASS));
+		app.getDungeonManager().getDungeonBase().resize(levelSizeZ, new GameObject(ObjectImageId.GROUND));
 		this.fixLimits();
 		// Save the entire level
 		app.getDungeonManager().getDungeonBase().save();
@@ -1070,14 +1070,14 @@ public class Editor implements MenuSection {
     }
 
     public void setPlayerLocation() {
-	final var template = new GameObject(ObjectImageId.PARTY);
+	final var template = new GameObject(ObjectImageId.PLAYER);
 	final var app = Inconnuclear.getStuffBag();
 	final var oldX = app.getDungeonManager().getDungeonBase().getStartColumn(this.activePlayer);
 	final var oldY = app.getDungeonManager().getDungeonBase().getStartRow(this.activePlayer);
 	final var oldZ = app.getDungeonManager().getDungeonBase().getStartFloor(this.activePlayer);
 	// Erase old player
 	try {
-	    app.getDungeonManager().getDungeonBase().setCell(new GameObject(ObjectImageId.GRASS), oldX, oldY, oldZ,
+	    app.getDungeonManager().getDungeonBase().setCell(new GameObject(ObjectImageId.GROUND), oldX, oldY, oldZ,
 		    template.getLayer());
 	} catch (final ArrayIndexOutOfBoundsException aioob) {
 	    // Ignore
@@ -1091,7 +1091,7 @@ public class Editor implements MenuSection {
     }
 
     void setPlayerLocation(final int x, final int y) {
-	final var template = new GameObject(ObjectImageId.PARTY);
+	final var template = new GameObject(ObjectImageId.PLAYER);
 	final var app = Inconnuclear.getStuffBag();
 	final var xOffset = this.vertScroll.getValue() - this.vertScroll.getMinimum();
 	final var yOffset = this.horzScroll.getValue() - this.horzScroll.getMinimum();
@@ -1104,7 +1104,7 @@ public class Editor implements MenuSection {
 	final var oldZ = app.getDungeonManager().getDungeonBase().getStartFloor(this.activePlayer);
 	// Erase old player
 	try {
-	    app.getDungeonManager().getDungeonBase().setCell(new GameObject(ObjectImageId.GRASS), oldX, oldY, oldZ,
+	    app.getDungeonManager().getDungeonBase().setCell(new GameObject(ObjectImageId.GROUND), oldX, oldY, oldZ,
 		    template.getLayer());
 	} catch (final ArrayIndexOutOfBoundsException aioob) {
 	    // Ignore

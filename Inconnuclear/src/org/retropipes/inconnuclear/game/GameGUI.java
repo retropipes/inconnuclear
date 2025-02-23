@@ -257,7 +257,7 @@ class GameGUI {
 			final var img1 = obj1.getImage();
 			final var img2 = obj2.getImage();
 			if (u == y && v == x) {
-			    final GameObject obj3 = new GameObject(ObjectImageId.PARTY);
+			    final GameObject obj3 = new GameObject(ObjectImageId.PLAYER);
 			    final var img3 = obj3.getImage();
 			    final var cacheName = Strings.compositeCacheName(obj1.getCacheName(), obj2.getCacheName(),
 				    obj3.getCacheName());

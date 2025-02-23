@@ -504,7 +504,7 @@ public final class DungeonData extends DungeonDataBase {
 
     @Override
     public int[] findPlayer(final DungeonBase dungeonBase, final int number) {
-	final var t = new GameObject(ObjectImageId.PARTY);
+	final var t = new GameObject(ObjectImageId.PLAYER);
 	int y, x, z;
 	for (x = 0; x < this.getColumns(); x++) {
 	    for (y = 0; y < this.getRows(); y++) {
@@ -579,8 +579,8 @@ public final class DungeonData extends DungeonDataBase {
 	    // Scan said OK to proceed
 	    final var dx = source.getBoundObjectX();
 	    final var dy = source.getBoundObjectY();
-	    if (!(this.getCell(dungeonBase, dx, dy, zFix, source.getLayer()).getId() != ObjectImageId.GRASS)) {
-		this.setCell(dungeonBase, new GameObject(ObjectImageId.GRASS), dx, dy, zFix, source.getLayer());
+	    if (!(this.getCell(dungeonBase, dx, dy, zFix, source.getLayer()).getId() != ObjectImageId.GROUND)) {
+		this.setCell(dungeonBase, new GameObject(ObjectImageId.GROUND), dx, dy, zFix, source.getLayer());
 		SoundLoader.playSound(Sounds.DOOR_OPEN);
 	    }
 	}
@@ -608,7 +608,7 @@ public final class DungeonData extends DungeonDataBase {
 	    for (var y = 0; y < DungeonDataBase.MIN_ROWS; y++) {
 		final var obj = this.getCell(dungeonBase, x, y, z, source.getLayer());
 		if (source.getClass().equals(obj.getClass())) {
-		    this.setCell(dungeonBase, new GameObject(ObjectImageId.GRASS), x, y, z, source.getLayer());
+		    this.setCell(dungeonBase, new GameObject(ObjectImageId.GROUND), x, y, z, source.getLayer());
 		}
 	    }
 	}
@@ -629,7 +629,7 @@ public final class DungeonData extends DungeonDataBase {
 		}
 		final var obj = this.getCell(dungeonBase, x, y, zFix, button.getLayer());
 		if (obj.hasSameBoundObject(button)) {
-		    this.setCell(dungeonBase, new GameObject(ObjectImageId.GRASS), x, y, zFix, button.getLayer());
+		    this.setCell(dungeonBase, new GameObject(ObjectImageId.GROUND), x, y, zFix, button.getLayer());
 		}
 	    }
 	}
@@ -660,7 +660,7 @@ public final class DungeonData extends DungeonDataBase {
 	    for (var y = 0; y < DungeonDataBase.MIN_ROWS; y++) {
 		for (var z = 0; z < this.getFloors(); z++) {
 		    final var obj = this.getCell(dungeonBase, y, x, z, Layer.GROUND.ordinal());
-		    if (!(obj.getId() != ObjectImageId.GRASS)) {
+		    if (!(obj.getId() != ObjectImageId.GROUND)) {
 			Inconnuclear.getStuffBag().getGame();
 			// Freeze the ground
 			Game.morph(obj.changesToOnExposure(Material.ICE), y, x, z, Layer.GROUND.ordinal());
@@ -1114,7 +1114,7 @@ public final class DungeonData extends DungeonDataBase {
 	    dungeonSizeY = reader.readInt();
 	    dungeonSizeZ = reader.readInt();
 	    final var lt = new DungeonData();
-	    lt.resize(dungeonBase, dungeonSizeZ, new GameObject(ObjectImageId.GRASS));
+	    lt.resize(dungeonBase, dungeonSizeZ, new GameObject(ObjectImageId.GROUND));
 	    for (x = 0; x < dungeonSizeX; x++) {
 		for (y = 0; y < dungeonSizeY; y++) {
 		    for (z = 0; z < dungeonSizeZ; z++) {
@@ -1125,7 +1125,7 @@ public final class DungeonData extends DungeonDataBase {
 		}
 	    }
 	    // Fill nulls
-	    lt.fillNulls(dungeonBase, new GameObject(ObjectImageId.GRASS), null, false);
+	    lt.fillNulls(dungeonBase, new GameObject(ObjectImageId.GROUND), null, false);
 	    lt.fillVirtual();
 	    return lt;
 	}
@@ -1150,7 +1150,7 @@ public final class DungeonData extends DungeonDataBase {
 		}
 	    }
 	    if (saveSizeX != DungeonDataBase.MIN_COLUMNS || saveSizeY != DungeonDataBase.MIN_ROWS) {
-		this.resizeSavedState(saveSizeZ, new GameObject(ObjectImageId.GRASS));
+		this.resizeSavedState(saveSizeZ, new GameObject(ObjectImageId.GROUND));
 	    }
 	} else {
 	    throw new IOException(Strings.error(ErrorString.UNKNOWN_FILE_FORMAT));
@@ -1348,11 +1348,7 @@ public final class DungeonData extends DungeonDataBase {
 	    floorFix = this.normalizeFloor(floorFix);
 	}
 	int x, y, z, w;
-	var game = Inconnuclear.getStuffBag().getGame();
-	var px = game.getPlayerLocation()[0];
-	var py = game.getPlayerLocation()[1];
 	// Tick all DungeonObject timers
-	GameObject.checkTunnels(px, py, dungeonBase);
 	for (z = Direction.NORTH.ordinal(); z <= Direction.NORTH_WEST.ordinal(); z += 2) {
 	    for (x = 0; x < this.getColumns(); x++) {
 		for (y = 0; y < this.getRows(); y++) {
@@ -1407,7 +1403,7 @@ public final class DungeonData extends DungeonDataBase {
 		    Layer.STATUS.ordinal());
 	    final var ground = this.getCell(dungeonBase, xLoc + dirMove[0], yLoc + dirMove[1], 0,
 		    Layer.GROUND.ordinal());
-	    if (!there.isSolid() && there.getId() != ObjectImageId.TUNNEL) {
+	    if (!there.isSolid()) {
 		if (DungeonBase.radialScan(xLoc, yLoc, 0, pLocX, pLocY)) {
 		    if (app.getMode() != StuffBag.STATUS_BATTLE) {
 			app.getGame().stopMovement();

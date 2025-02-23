@@ -31,24 +31,6 @@ public final class GameObject implements RandomGenerationRule {
     private static final int DEFAULT_MINIMUM_REACTION_FORCE = 1;
     private static final int METAL_MINIMUM_REACTION_FORCE = 2;
     private final static boolean[] tunnelsFull = new boolean[Strings.COLOR_COUNT];
-    private final static int SCAN_RADIUS = 24;
-
-    public static void checkTunnels(final int tx, final int ty, final DungeonBase dungeonBase) {
-	for (var x = 0; x < Strings.COLOR_COUNT; x++) {
-	    GameObject.checkTunnelsOfColor(tx, ty, dungeonBase, Colors.values()[x]);
-	}
-    }
-
-    protected static void checkTunnelsOfColor(final int tx, final int ty, final DungeonBase dungeonBase,
-	    final Colors color) {
-	final var pgrmdest = dungeonBase.circularScanTunnel(0, 0, 0, GameObject.SCAN_RADIUS, tx, ty,
-		GameObject.getTunnelOfColor(color), false);
-	if (pgrmdest != null) {
-	    GameObject.tunnelsFull[color.ordinal()] = false;
-	} else {
-	    GameObject.tunnelsFull[color.ordinal()] = true;
-	}
-    }
 
     public static final int getImbuedRangeForce(final Material material) {
 	if (material == Material.PLASTIC) {
@@ -58,12 +40,6 @@ public final class GameObject implements RandomGenerationRule {
 	    return METAL_MINIMUM_REACTION_FORCE;
 	}
 	return DEFAULT_MINIMUM_REACTION_FORCE;
-    }
-
-    protected static GameObject getTunnelOfColor(final Colors color) {
-	var tunnel = new GameObject(ObjectImageId.TUNNEL);
-	tunnel.color = color;
-	return tunnel;
     }
 
     public static GameObject read(final DataIOReader reader) throws IOException {
