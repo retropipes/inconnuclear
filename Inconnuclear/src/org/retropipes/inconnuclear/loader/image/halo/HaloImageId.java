@@ -14,15 +14,24 @@ import org.retropipes.inconnuclear.locale.Strings;
 import org.retropipes.inconnuclear.locale.Untranslated;
 
 public enum HaloImageId implements DianeImageIndex {
-    BLESSED, BLESSMORE, BLESSMOST, CURSED, CURSEMORE, CURSEMOST, _NONE;
+    BASE,
+    MORE,
+    MOST,
+    _NONE;
 
     @Override
     public String getName() {
-	return HaloImageCatalogLoader.getFilename(this.ordinal());
+	if (this == HaloImageId._NONE) {
+	    return null;
+	}
+	return this.toString().toLowerCase();
     }
 
     @Override
     public URL getURL() {
+	if (this == HaloImageId._NONE) {
+	    return null;
+	}
 	return this.getClass().getResource(Strings.untranslated(Untranslated.HALO_IMAGE_LOAD_PATH) + this.getName()
 		+ Strings.fileExtension(FileExtension.IMAGE));
     }
